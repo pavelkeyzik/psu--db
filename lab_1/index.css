@@ -1,0 +1,35 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+section {
+  border-top: 2px solid #eee;
+  border-bottom: 2px solid #eee;
+  padding: 30px 20px;
+}
+
+h1 {
+  text-decoration: underline;
+}
+
+.calculator__output {
+  grid-area: output;
+}
+
+.calculator__button_first {
+  grid-area: first;
+}
+
+.calculator__button_second {
+  grid-area: second;
+}
+
+.calculator {
+  display: grid;
+  max-width: 350px;
+  grid-template-areas:
+    'output output output'
+    'first second second';
+}

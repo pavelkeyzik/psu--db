@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lab 1</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <nav>
+    <a href="#exerciseOne">Практическое задание №1</a>
+    <a href="#exerciseTwo">Практическое задание №2</a>
+    <a href="#exerciseThree">Практическое задание №3</a>
+    <a href="#exerciseFour">Практическое задание №4</a>
+    <a href="#exerciseFive">Практическое задание №5</a>
+    <a href="#exerciseSix">Практическое задание №6</a>
+    <a href="#exerciseSeven">Практическое задание №7</a>
+  </nav>
+  <main>
+    <section id="exerciseOne">
+      <h1>Практическое задание №1</h1>
+      <ol>
+        <li>
+          <b>Автомобиль</b>
+          <ul>
+            <b>Свойства:</b>
+            <ul>
+              <li>Объём двигателя</li>
+              <li>Привод</li>
+              <li>Трансмисия</li>
+              <li>Вид топлива</li>
+            </ul>
+          </ul>
+          <ul>
+            <b>Методы:</b>
+            <ul>
+              <li>Получить текущую скорость</li>
+              <li>Получить текущее количество оборотов двигателя</li>
+              <li>Получить текущее состояние электронного оборудования</li>
+            </ul>
+          </ul>
+          <ul>
+            <b>События:</b>
+            <ul>
+              <li>Машина начала движение</li>
+              <li>Машина начала поворот</li>
+              <li>Машина начала торможение</li>
+            </ul>
+          </ul>
+        </li>
+        <li>
+          <b>Кнопка</b>
+          <ul>
+            <b>Свойства:</b>
+            <ul>
+              <li>Ширина</li>
+              <li>Высота</li>
+              <li>Радиус закругления</li>
+            </ul>
+          </ul>
+          <ul>
+            <b>Методы:</b>
+            <ul>
+              <li>Получить список атрибутов</li>
+              <li>Получить родительский элемент</li>
+              <li>Получить значение</li>
+            </ul>
+          </ul>
+          <ul>
+            <b>События:</b>
+            <ul>
+              <li>Кнопку нажали</li>
+              <li>Кнопку нажали дважды</li>
+              <li>Курсор над кнопкой</li>
+            </ul>
+          </ul>
+        </li>
+      </ol>
+    </section>
+    <section id="exerciseTwo">
+      <h1>Практическое задание №2</h1>
+      <article>
+        <h2>Угадайка</h2>
+        <form>
+          <label>
+            <span>Введите целое число от 0 до 10:</span>
+            <input type="number" id="exerciseTwo_input" min="0" max="10">
+          </label>
+          <button type="button" id="exerciseTwo_button">Ответ</button>
+          <label>
+            <span>Результат:</span>
+            <input id="exerciseTwo_output" type="text" disabled>
+          </label>
+        </form>
+      </article>
+      <article>
+        <h2>Объём параллелепипеда</h2>
+        <form>
+          <label>
+            <span>Длина:</span>
+            <input type="number" id="exerciseTwo_inputLength" min="1" value="1" required>
+          </label>
+          <label>
+            <span>Ширина:</span>
+            <input type="number" id="exerciseTwo_inputWidth" min="1" value="1" required>
+          </label>
+          <label>
+            <span>Высота:</span>
+            <input type="number" id="exerciseTwo_inputHeight" min="1" value="1" required>
+          </label>
+          <button type="button" id="exerciseTwo_buttonVolume">Ответ</button>
+          <label>
+            <span>Результат:</span>
+            <input id="exerciseTwo_outputVolume" type="text" disabled>
+          </label>
+        </form>
+      </article>
+    </section>
+    <section id="exerciseThree">
+      <h1>Практическое задание №3</h1>
+      <article>
+        <h2>Сумма чисел</h2>
+        <form>
+          <label>
+            <span>Введите целое число:</span>
+            <input type="number" id="exerciseThree_input" min="1">
+          </label>
+          <button type="button" id="exerciseThree_button">Вычислить</button>
+          <label>
+            <span>Результат:</span>
+            <input id="exerciseThree_output" type="text" disabled>
+          </label>
+        </form>
+      </article>
+    </section>
+    <section id="exerciseFour">
+        <h1>Практическое задание №4</h1>
+        <article>
+          <h2>Математические функции</h2>
+          <form>
+            <label>
+              <span>Введите целое число:</span>
+              <input type="text" id="exerciseFour_input">
+            </label>
+            <button type="button" id="exerciseFour_buttonAbs">Abs</button>
+            <button type="button" id="exerciseFour_buttonCInt">CInt</button>
+            <button type="button" id="exerciseFour_buttonFix">Fix</button>
+            <button type="button" id="exerciseFour_buttonInt">Int</button>
+            <button type="button" id="exerciseFour_buttonSqr">Sqr</button>
+            <label>
+              <span>Результат:</span>
+              <input id="exerciseFour_output" type="text" disabled>
+            </label>
+          </form>
+        </article>
+    </section>
+    <section id="exerciseFive">
+      <h1>Практическое задание №5</h1>
+      <article>
+        <h2>Площадь прямоугольника</h2>
+        <form>
+          <label>
+            <span>Длина:</span>
+            <input type="number" id="exerciseFive_inputHeight" min="1">
+          </label>
+          <label>
+            <span>Ширина:</span>
+            <input type="number" id="exerciseFive_inputWidth" min="1">
+          </label>
+          <button type="button" id="exerciseFive_button">Вычислить</button>
+          <label>
+            <span>Площадь:</span>
+            <input id="exerciseFive_output" type="text" disabled>
+          </label>
+        </form>
+      </article>
+    </section>
+    <section id="exerciseSix">
+      <h1>Практическое задание №6</h1>
+      <article>
+        <h2>Подсчёт символов</h2>
+        <form>
+          <label>
+            <span>Введите текст:</span>
+            <input type="text" id="exerciseSix_input">
+          </label>
+          <button type="button" id="exerciseSix_button">Подсчитать символы</button>
+          <br>
+          <label id="exerciseSix_output">Летели вороны</label>
+        </form>
+      </article>
+    </section>
+    <section id="exerciseSeven">
+      <h1>Калькулятор</h1>
+      <div class="calculator">
+        <input type="text" id="js-calculator__output" class="calculator__output" value="0" disabled>
+        <button class="calculator__button calculator__button_first" value="C">C</button>
+        <button class="calculator__button calculator__button_second" value="backspace">⌫</button>
+        <button class="calculator__button" value="+/-">+/-</button>
+        <button class="calculator__button" value="√">√</button>
+        <button class="calculator__button" value="sin">sin</button>
+        <button class="calculator__button" value="cos">cos</button>
+        <button class="calculator__button" value="tan">tan</button>
+        <button class="calculator__button" value="+">+</button>
+        <button class="calculator__button" value="-">-</button>
+        <button class="calculator__button" value="*">*</button>
+        <button class="calculator__button" value="/">/</button>
+        <button class="calculator__button" value="7">7</button>
+        <button class="calculator__button" value="8">8</button>
+        <button class="calculator__button" value="9">9</button>
+        <button class="calculator__button" value="4">4</button>
+        <button class="calculator__button" value="5">5</button>
+        <button class="calculator__button" value="6">6</button>
+        <button class="calculator__button" value="1">1</button>
+        <button class="calculator__button" value="2">2</button>
+        <button class="calculator__button" value="3">3</button>
+        <button class="calculator__button" value="0">0</button>
+        <button class="calculator__button" value=".">.</button>
+        <button class="calculator__button" value="=">=</button>
+      </div>
+    </section>
+  </main>
+  <script src="index.js"></script>
+</body>
+</html>
