@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="stylesheet", href="/static/styles/index.css")
+    title Lab_2
+  body
+  div
+    label
+      span(class="button" tabindex=0) Upload text
+      input(type="file" hidden)
+    form(action="/text", method="get" class="inline")
+      label
+        button(class="button" tabindex=0) Download text
+    span
+      | |
+    label
+      span(class="button" tabindex=0) Upload binary
+      input(type="file" hidden)
+    form(action="/binary", method="get" class="inline")
+      label
+        button(class="button" tabindex=0) Download binary
+  form(class="form" method="post")
+    label Model name:
+      input(type="text" class="form__input" name="model" placeholder="SUBARU Impreza WRX STi" required)
+    label Count of wheels:
+      input(type="number" min=4 max=12 value=4 class="form__input" name="wheels" required)
+    label Max speed (Km/h):
+      input(type="number" min=0 max=400 value=180 class="form__input" name="speed" required)
+    button(type="submit" class="button navigation__button") Add item
+  main
+    table(class='table')
+      tr
+        th Car model
+        th Count of wheels
+        th Max speed
+      tr
+        td SUBARU Impreza WRX STi
+        td 4
+        td 348 Km/h
+      each item in data
+        tr
+          td= item.model
+          td= item.countOfWheels
+          td= `${item.maxSpeed} Km/h`
