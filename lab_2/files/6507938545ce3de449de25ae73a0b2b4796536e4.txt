@@ -1,0 +1,1 @@
+[{"model":"SUBARU Impreza WRX","countOfWheels":4,"maxSpeed":320},{"model":"BMW Z4","countOfWheels":4,"maxSpeed":220},{"model":"qwewqe","countOfWheels":"4","maxSpeed":"180"}]

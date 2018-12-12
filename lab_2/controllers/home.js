@@ -1,19 +1,9 @@
 const fs = require('fs');
 const crypto = require('crypto');
 const path = require('path');
+const formidable = require('formidable');
 
-const initialItems = [
-  {
-    model: 'SUBARU Impreza WRX',
-    countOfWheels: 4,
-    maxSpeed: 320
-  },
-  {
-    model: 'BMW Z4',
-    countOfWheels: 4,
-    maxSpeed: 220
-  }
-];
+let initialItems = [];
 
 const homePage = (req, res) => {
   res.render('index', {
@@ -35,28 +25,82 @@ const addNewItem = (req, res) => {
   });
 };
 
-const textReport = async (req, res) => {
+const textReport = async (req, res, next) => {
   crypto.randomBytes(20, async (err, buf) => {
-    if (err) throw err;
+    if (err) return next(err);
     const fileName = path.resolve('files', `${buf.toString('hex')}.txt`);
-    await fs.writeFile(fileName, JSON.stringify(initialItems), (err) => {
+    try {
+      await fs.writeFile(fileName, JSON.stringify(initialItems), (err) => {
+        if (err) {
+          return next(err);
+        }
+        res.download(fileName);
+      });
+    } catch (err) {
+      return next(err);
+    }
+  });
+};
+
+const binaryReport = async (req, res, next) => {
+  crypto.randomBytes(20, async (err, buf) => {
+    if (err) return next(err);
+    const fileName = path.resolve('files', `${buf.toString('hex')}.bin`);
+    try {
+      await fs.writeFile(fileName, new Buffer(JSON.stringify(initialItems), 'binary'), { encoding: 'binary' }, (err) => {
+        if (err) {
+          return next(err);
+        }
+        res.download(fileName);
+      });
+    } catch (err) {
+      return next(err);
+    }
+  });
+};
+
+const uploadText = (req, res, next) => {
+  const form = new formidable.IncomingForm();
+
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      return next(err);
+    }
+
+    fs.readFile(files.upload.path, (err, data) => {
       if (err) {
-        console.log(err);
+        return next(err);
       }
-      res.download(fileName);
+      try {
+        const items = JSON.parse(data.toString());
+        initialItems = items;
+      } catch (err) {
+        return next(err);
+      }
+      res.redirect('/');
     });
   });
 };
 
-const binaryReport = async (req, res) => {
-  crypto.randomBytes(20, async (err, buf) => {
-    if (err) throw err;
-    const fileName = path.resolve('files', `${buf.toString('hex')}.bin`);
-    await fs.writeFile(fileName, new Buffer(initialItems, 'binary'), { encoding: 'binary' }, (err) => {
+const uploadBinary = (req, res, next) => {
+  const form = new formidable.IncomingForm();
+
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      return next(err);
+    }
+
+    fs.readFile(files.upload.path, 'binary', (err, data) => {
       if (err) {
-        console.log(err);
+        return next(err);
       }
-      res.download(fileName);
+      try {
+        const items = JSON.parse(data.toString('binary'));
+        initialItems = items;
+      } catch (err) {
+        return next(err);
+      }
+      res.redirect('/');
     });
   });
 };
@@ -66,4 +110,6 @@ module.exports = {
   addNewItem,
   textReport,
   binaryReport,
+  uploadText,
+  uploadBinary,
 };

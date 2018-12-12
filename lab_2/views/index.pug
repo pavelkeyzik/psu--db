@@ -8,20 +8,22 @@ html(lang="en")
     title Lab_2
   body
   div
-    label
-      span(class="button" tabindex=0) Upload text
-      input(type="file" hidden)
-    form(action="/text", method="get" class="inline")
-      label
-        button(class="button" tabindex=0) Download text
-    span
-      | |
-    label
-      span(class="button" tabindex=0) Upload binary
-      input(type="file" hidden)
-    form(action="/binary", method="get" class="inline")
-      label
-        button(class="button" tabindex=0) Download binary
+    div
+      form(action="/text", method="post" class="inline" enctype="multipart/form-data")
+        label
+          input(type="file" name="upload")
+          button(class="button" tabindex=0) Upload text
+      form(action="/text", method="get" class="inline")
+        label
+          button(class="button" tabindex=0) Download text
+    div
+      form(action="/binary", method="post" class="inline" enctype="multipart/form-data")
+        label
+          input(type="file" name="upload")
+          button(class="button" tabindex=0) Upload binary
+      form(action="/binary", method="get" class="inline")
+        label
+          button(class="button" tabindex=0) Download binary
   form(class="form" method="post")
     label Model name:
       input(type="text" class="form__input" name="model" placeholder="SUBARU Impreza WRX STi" required)
@@ -31,17 +33,17 @@ html(lang="en")
       input(type="number" min=0 max=400 value=180 class="form__input" name="speed" required)
     button(type="submit" class="button navigation__button") Add item
   main
-    table(class='table')
-      tr
-        th Car model
-        th Count of wheels
-        th Max speed
-      tr
-        td SUBARU Impreza WRX STi
-        td 4
-        td 348 Km/h
-      each item in data
+    if message
+      h2 Ooops... Something went wrong
+      pre #{message}
+    if data
+      table(class='table')
         tr
-          td= item.model
-          td= item.countOfWheels
-          td= `${item.maxSpeed} Km/h`
+          th Car model
+          th Count of wheels
+          th Max speed
+        each item in data
+          tr
+            td= item.model
+            td= item.countOfWheels
+            td= `${item.maxSpeed} Km/h`
