@@ -7,19 +7,24 @@ const secondaryColor = document.getElementById('js-color-secondary');
 const solidType = document.getElementById('js-fill-type-solid');
 const gradientType = document.getElementById('js-fill-type-gradient');
 
-console.log();
-console.log();
-
-const getFill = (x0, y0, x1, y1) => {
+const getFillSquare = (x0, y0, x1, y1) => {
   if (solidType.checked) {
     return mainColor.value;
   }
-  if (gradientType.checked) {
-    const gradient = ctx.createLinearGradient(x0, y0, x1, y1);
-    gradient.addColorStop(0, mainColor.value);
-    gradient.addColorStop(1, secondaryColor.value);
-    return gradient;
+  const gradient = ctx.createLinearGradient(x0, y0, x1, y1);
+  gradient.addColorStop(0, mainColor.value);
+  gradient.addColorStop(1, secondaryColor.value);
+  return gradient;
+}
+
+const getFillCircle = (x0, y0, r0, x1, y1, r1) => {
+  if (solidType.checked) {
+    return mainColor.value;
   }
+  const gradient = ctx.createRadialGradient(x0, y0, r0, x1, y1, r1);
+  gradient.addColorStop(0, mainColor.value);
+  gradient.addColorStop(1, secondaryColor.value);
+  return gradient;
 }
 
 const renderClear = () => {
@@ -29,7 +34,7 @@ const renderClear = () => {
 clear.addEventListener('click', renderClear);
 
 const renderSquare = (width, heigth, x, y) => {
-  const fill = getFill(0, 0, width, heigth);
+  const fill = getFillSquare(0, 0, width, heigth);
   ctx.fillStyle = fill;
   ctx.fillRect(x, y, width, heigth);
 };
@@ -46,4 +51,24 @@ renderSquareButton.addEventListener('click', () => {
   const width = squareW.value;
   const heigth = squareH.value;
   renderSquare(width, heigth, x, y);
+});
+
+const renderCircle = (x, y, r) => {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, 2 * Math.PI);
+  const fill = getFillCircle(x, y, 0, x, y, r);
+  ctx.fillStyle = fill;
+  ctx.fill();
+};
+
+const renderCircleButton = document.getElementById('js-render-circle');
+const circleX = document.getElementById('figure__circle-x');
+const circleY = document.getElementById('figure__circle-y');
+const circleR = document.getElementById('figure__circle-r');
+
+renderCircleButton.addEventListener('click', () => {
+  const x = circleX.value;
+  const y = circleY.value;
+  const radius = circleR.value;
+  renderCircle(x, y, radius);
 });
