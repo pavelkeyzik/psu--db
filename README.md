@@ -6,3 +6,36 @@
  - [x]  [Лабораторная работа №6](https://github.com/pavelkeyzik/psu--db/tree/master/lab_6/)
  - [x]  [Лабораторная работа №7](https://github.com/pavelkeyzik/psu--db/tree/master/lab_7/)
  - [x]  Лабораторная работа №12 (Реализовано в курсовом проекте)
+
+# Tables
+
+## checkIns
+|Field|Type|
+|-|-|
+|id|PRIMARY|
+|checkInTime|DATE|
+|userId|uuid `id (users)`|
+|placeId|uuid `id (places)`|
+
+## placeTypes
+|Field|Type|
+|-|-|
+|id|PRIMARY|
+|title|VARCHAR|
+
+## places
+|Field|Type|
+|-|-|
+|id|PRIMARY|
+|title|VARCHAR|
+|city|VARCHAR|
+|address|VARCHAR|
+|type|uuid `id (placeTypes)`|
+
+## users
+|Field|Type|
+|-|-|
+|id|PRIMARY|
+|firstNameEng|VARCHAR|
+|lastNameEng|VARCHAR|
+|isAdmin|BOOLEAN|
