@@ -1,0 +1,28 @@
+.canvas {
+  display: flex;
+  border: 2px solid;
+}
+
+.figures {
+  display: flex;
+}
+
+.figures__section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.color {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.color__section {
+  margin: 10px;
+}
+
+.clear {
+  margin: 10px;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Рисовалка</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <fieldset>
+    <legend>Маштабирование</legend>
+    <label for="js-input__range">100%</label>
+    <input id="js-input__range" type="range" min="50" max="150" step="10" value="90">
+  </fieldset>
+  <label class="color">
+    <span>Выберите цвет для фигуры: </span>
+    <div class="color__section">
+      <label>
+        <span>Сплошная заливка</span>
+        <input id="js-fill-type-solid" type="radio" name="fill-type" value="solid" checked>
+      </label>
+      <label>
+        <span>Градиент</span>
+        <input id="js-fill-type-gradient" type="radio" name="fill-type" value="gradient">
+      </label>
+    </div>
+    <div class="color__section">
+      <input type="color" id="js-color-main">
+      <input type="color" id="js-color-secondary">
+    </div>
+  </label>
+  <fieldset class="figures">
+    <legend>Фигуры</legend>
+    <fieldset class="figures__section">
+      <legend>Квадрат</legend>
+      <label for="figure__square-x">Координата X:</label>
+      <input id="figure__square-x" type="number" min="0" max="600">
+      <label for="figure__square-y">Координата Y:</label>
+      <input id="figure__square-y" type="number" min="0" max="400">
+      <label for="figure__square-w">Ширина:</label>
+      <input id="figure__square-w" type="number" min="0" max="600">
+      <label for="figure__square-h">Высота:</label>
+      <input id="figure__square-h" type="number" min="0" max="400">
+      <button id="js-render-square">Применить</button>
+    </fieldset>
+  </fieldset>
+  <main>
+    <h1>Результат:</h1>
+    <button id="js-clear" class="clear">Очистить</button>
+    <canvas id="canvas" class="canvas" width="600" height="400"></canvas>
+  </main>
+  <script src="./index.js"></script>
+</body>
+</html>
