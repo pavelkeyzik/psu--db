@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="stylesheet", href="/static/styles/index.css")
+    title Lab_13
+  body
+  h1 Лабораторная работа №13
+  p Сделал лимит на вывод 10 БД, потому что всего на сервере их более, чем 8730 БД
+  pre SELECT datname FROM pg_database WHERE datistemplate = false LIMIT 10;
+  h2 Последние 10 БД на сервере
+  if data
+      ul(class='list')
+        each item in data
+          li= item.datname
+
+  h2 Схема моей БД
+  p
+    i К сожалению, к остальным БД у меня доступа нет, так как это реальный сервер с реальными БД
+  if tables
+    table(border="1")
+      tr
+        th TABLE
+        th FIELD
+        th TYPE
+      each item in tables
+        tr
+          td= item.table_name
+          td= item.column_name
+          td= item.data_type
+
+  h2 Полная схема таблиц (Так же сделан лимит, так как это реальный деплой)
+  pre SELECT * FROM information_schema.columns LIMIT 10;
+  if tables
+    ol(class='list')
+      each item in tables
+          li= `TABLE: ${item.table_name}, FIELD: (${item.column_name}), TYPE: (${item.data_type})`
+            pre= JSON.stringify(item, null, 2)
