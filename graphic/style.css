@@ -1,0 +1,14 @@
+#graphic div {
+    background: #333;
+    margin: 2px 2px 40px;
+    position: relative;
+    height: 20px;
+    color: #fff;
+}
+
+#graphic span {
+    left: 0;
+    top: 20px;
+    position: absolute;
+    color: #333;
+}
